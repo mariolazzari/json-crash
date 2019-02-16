@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JSON</title>
+    <ul id="people"></ul>
+  </head>
+  <body>
+    <script>
+      let person = {
+        name: "Mario",
+        age: 43,
+        email: () => "mario.lazzari@gmail.com",
+        address: {
+          street: "Via Giovanni Paolo II, 20",
+          city: "Coccaglio",
+          state: "Brescia",
+          country: "Italy"
+        },
+        children: []
+      };
+
+      console.log(person);
+      console.log(person.email());
+      const personStr = JSON.stringify(person);
+      console.log(personStr);
+      const personObj = JSON.parse(personStr);
+      console.log(personObj);
+      console.log(personObj.address.street);
+
+      fetch("peope.json").then(res => console.log(res));
+
+      /*
+      fetch("./people.json")
+        .then(res.json())
+        .then(data => {
+          let output = "";
+
+          console.log(data);
+          /*
+          data.people.forEach(person => {
+            console.log(person.name);
+            output += `<li> ${person.name} </li>`;
+          });
+          document.getElementById("people").innerHTML = output;
+        
+        });
+        */
+    </script>
+  </body>
+</html>
